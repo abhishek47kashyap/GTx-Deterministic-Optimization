@@ -28,7 +28,8 @@ scatter(Idx, min(objective_function(:)), 'ro', 'filled'), grid on
 v = -10:0.5:25;
 [X,Y] = meshgrid(v);
 
-conditions = (X + 3*Y >= 6) & (X + Y >= 4) & (X >= 0) & (Y >= 0);   % contains logical 0's and 1's
+conditions = (X + 3*Y >= 6) & (X + Y >= 4) ...
+             & (X >= 0) & (Y >= 0);   % contains logical 0's and 1's
          
 conditions = double(conditions);
 conditions(conditions == 0) = NaN;
@@ -48,3 +49,14 @@ figure(2), subplot(2,1,1), surf(X, Y, objective_function), colorbar
 xlabel('X'), ylabel('Y'), zlabel('X^2 + Y^2'), title('conditions calculated by MATLAB')
 subplot(2,1,2), plot(1:length(objective_function(:)), objective_function(:), 'b'), ylabel('X^2 + Y^2'), hold on
 scatter(Idx, min(objective_function(:)), 'ro', 'filled'), grid on
+
+
+%% approach 3 (using plot functions)
+
+x = -10:0.1:10;
+
+y1 = 2 - (x/3);
+y2 = 4 - x;
+
+figure(3), plot(x,y1,'r', x,y2,'b'), legend('x+3y \geq 6', 'x+y \geq 4'),
+xlabel('x'), ylabel('y'), xlim([0 inf]), ylim([0 inf]), grid on
