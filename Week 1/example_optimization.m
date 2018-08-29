@@ -28,8 +28,7 @@ scatter(Idx, min(objective_function(:)), 'ro', 'filled'), grid on
 v = -10:0.5:25;
 [X,Y] = meshgrid(v);
 
-conditions = (X + 3*Y >= 6) & (X + Y >= 4) ...
-             & (X >= 0) & (Y >= 0);   % contains logical 0's and 1's
+conditions = (X + 3*Y >= 6) & (X + Y >= 4) & (X >= 0) & (Y >= 0);   % contains logical 0's and 1's
          
 conditions = double(conditions);
 conditions(conditions == 0) = NaN;
